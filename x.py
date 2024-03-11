@@ -14,7 +14,7 @@ def upload_to_gcs(local_filename, bucket_name, gcs_filename):
     bucket = storage_client.bucket(bucket_name)
     blob = bucket.blob(gcs_filename)
     blob.upload_from_filename(local_filename)
-    return f"https://storage.googleapis.com/{bucket_name}/{gcs_filename}"
+    return blob.public_url
 
 def main():
     url = input("Enter the URL of the file you want to download: ")
